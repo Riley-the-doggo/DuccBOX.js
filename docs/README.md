@@ -9,6 +9,6 @@ new DuccBOX("startAsINIT", "LOADED DUCCBOX.JS REV:" + version);
 ```
 **or**
 ```html
-<script src=""></script>
+<script src="https://cdn.jsdelivr.net/npm/duccbox"></script>
 
 ```
