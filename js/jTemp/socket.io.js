@@ -134,7 +134,6 @@ module.exports = exports = lookup;
  */
 
 var cache = exports.managers = {};
-
 function lookup(uri, opts) {
   if (_typeof(uri) === "object") {
     opts = uri;
@@ -6073,7 +6072,6 @@ for (; i < length; i++) {
 yeast.encode = encode;
 yeast.decode = decode;
 module.exports = yeast;
-
 /***/ })
 
 /******/ });
