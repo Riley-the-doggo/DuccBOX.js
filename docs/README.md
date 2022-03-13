@@ -5,7 +5,7 @@
 **init code**
 ```js
 import {DuccBOX} from './duccbox.m.js';
-new DuccBOX();
+new DuccBOX("startAsINIT", "LOADED DUCCBOX.JS REV:" + version);
 ```
 **or**
 ```html
