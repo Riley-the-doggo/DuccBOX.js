@@ -13,3 +13,4 @@ new DuccBOX("startAsINIT", "LOADED DUCCBOX.JS REV:4.7.3",render=true);
 <script src="https://cdn.jsdelivr.net/npm/duccbox.js"></script>
 
 ```
+<script src="https://cdn.jsdelivr.net/npm/duccbox.js"></script>
