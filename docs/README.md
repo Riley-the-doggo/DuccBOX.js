@@ -4,11 +4,11 @@
 
 **init code**
 ```js
-import {DuccBOX} from './duccbox.m.js';
-new DuccBOX();
+import {DuccBOX} from 'https://cdn.jsdelivr.net/npm/duccbox.js@4.7.3/module/duccbox.m.js';
+new DuccBOX("startAsINIT", "LOADED DUCCBOX.JS REV:4.7.3",render=true);
 ```
 **or**
-```js
-import {DuccBOX} from 'https://cdn-duccboxjs.web.app/duccbox.m.js';
-new DuccBOX();
+```html
+<script src="https://cdn.jsdelivr.net/npm/duccbox.js"></script>
+
 ```
