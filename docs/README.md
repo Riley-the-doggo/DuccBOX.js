@@ -1,4 +1,5 @@
-[# DuccBOX.js](https://duccboxjs-281f7.web.app/)
+# DuccBOX.js
+[Website](https://duccboxjs-281f7.web.app/)
 
 > Getting started...
 
