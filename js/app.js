@@ -1,5 +1,6 @@
 "use strict";
 let socket;
+
 //Fuzzy_Ducc is the ducc king
 /*
 ██████╗░██╗░░░██╗░█████╗░░█████╗░██████╗░░█████╗░██╗░░██╗░░░░░░░░██╗░██████╗
@@ -8,11 +9,13 @@ let socket;
 ██║░░██║██║░░░██║██║░░██╗██║░░██╗██╔══██╗██║░░██║░██╔██╗░░░░██╗░░██║░╚═══██╗
 ██████╔╝╚██████╔╝╚█████╔╝╚█████╔╝██████╦╝╚█████╔╝██╔╝╚██╗██╗╚█████╔╝██████╔╝
 ╚═════╝░░╚═════╝░░╚════╝░░╚════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░╚════╝░╚═════╝░
+Made by I like food#8767
 *-----------------------------------------------*
  *                                               *
  *                   GLOBAL                      *
  *                                               *
  ------------------------------------------------*/
+ 
 const version = " v4.7.3 M2";
 const Wrapper = document.getElementById("Wrapper");
 import { GLTFLoader } from "./node_modules/three/examples/jsm/loaders/GLTFLoader.js";
@@ -20,13 +23,9 @@ import * as THREE from "./node_modules/three/build/three.module.js";
 import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls.js";
 import { PointerLockControls } from "./node_modules/three/examples/jsm/controls/PointerLockControls.js";
 import { Stats } from "./node_modules/three/examples/jsm/libs/stats.module.js";
-import "./node_modules/firebase/firebase-app.js";
-import "./node_modules/firebase/firebase-analytics.js";
-import "./node_modules/firebase/firebase-auth.js";
-import "./node_modules/jquery/dist/jquery.slim.js";
-import "./node_modules/socket.io-client/dist/socket.io.js";
+import './lib.js'
 class DuccBOX {
-  constructor(startAs, StartMsg) {
+  constructor(startAs, StartMsg,render) {
     let dev;
     console.log(StartMsg);
     if (startAs == "startAsLocal") {
@@ -37,6 +36,201 @@ class DuccBOX {
       dev = false;
       console.log("[DuccBOX] Launch {startAsINIT}");
     }
+    if(render == true ){
+      document.write(`<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <link rel="manifest" href="manifest.webmanifest">
+          <link rel="icon" type="image/svg+xml" href="img/app.svg">
+          <meta property="og:title" content="DuccBOX an open world sandbox" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://duccboxjs-281f7.web.app" />
+          <meta property="og:image" content="https://duccboxjs-281f7.web.app/img/logo.png" />
+          <meta property="og:site_name" content="" />
+          <meta property="og:description" content="DuccBOX M2 is an Open world sandbox made with WebGL/Three.js"/>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>DuccBOX an open world sandbox</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <link href="css/style.css" type="text/css" rel="stylesheet" />
+          <style>
+          body{
+              background-color: gray;
+              background-image: url(https://media.tenor.com/images/5c28d62f119f98ee5bbb33d015c3255b/tenor.gif);
+              background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+            #Wrapper{
+              position: fixed;
+            }
+            canvas {
+              width: 100%;
+              height: 100%
+            }
+            
+            @font-face {
+              font-family: ms-comic;
+              src: url(../font/comicbd.ttf);
+            }
+            @font-face {
+            font-family: stfpro;
+            src: url(../font/SFPro/SF-Pro-Display-HeavyItalic.otf);
+            }
+            @font-face {
+            font-family: stfpro-main;
+            src: url(../font/SFPro/sfwin/SFPro/TrueType/SFProDisplay-Regular.ttf);
+            }
+            @font-face {
+            font-family: px-sans;
+            src: url(../font/px_sans_nouveaux.woff);
+            }
+            #comic{
+              font-family: ms-comic;
+            }
+            #cords{   border-style: solid;
+              border-color: black;
+            border-width: 1px;
+            position: fixed;
+            top: auto;
+            }
+            
+            input:focus {
+            background-color: lightblue;
+            }
+            #duccbox-help-menu{
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            border-color: black;
+            margin: 0.5cm;
+            }
+            #login{
+              margin: auto;
+              width: 60%;
+              padding: 10px;
+            }
+            button{
+              background-color: #708b82;
+              color: white;
+              padding: 12px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              float: right;
+            }
+            input[type=text]:focus,input[type=text]:hover{
+              background-color: lightblue;
+              }
+              input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+              }
+          </style>
+        </head>
+        <body>
+          <div style="position: fixed; display: none; background-color: rgb(189, 13, 13);   opacity: 0.5;" id="you-died">
+      
+          </div>
+          <div id ='Wrappder'><div style="position: fixed;" id='DuccBOX'>
+        <p class="rev" onclick="const params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=600,height=300,left=100,top=100';window.open('/Milestone-builds.html', 'test', params);" id="rev">______|DuccBOX.js REV [REV_ID]</p>7
+        <br/>
+        <p class="cords" id="cords"></p><br/>
+        <p id="username"></p>
+        <p id="prog"></p>
+        <p id='id1'></p>
+       <h1 id='kicked'></h1>
+       <p onclick="window.open('../account/index.html','New Tab',
+        'height=500,width=400,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');"><kbd>Account</kbd></p>
+       <div id='Help' style="border-style: solid; position: fixed;">
+         <samp><p>DuccBOX.js controls.</p>
+          <!--[if lte IE 8]>
+            <h1>Browser is ducced</h1>
+      <![endif]-->
+           <p><kbd>W</kbd>forward</p></br>
+           <p><kbd>A</kbd>left</p></br>
+           <p><kbd>S</kbd>backword</p></br>
+           <p><kbd>D</kbd>left</p></br>
+           <p><kbd>R</kbd>Rotate right</p></br>
+           <p><kbd>E</kbd>Rotate left</p></br>
+           <p><kbd>X</kbd>Open Help</p></br>
+           <p><kbd>L</kbd>Open Login Menu</p></br>
+           <p><kbd onclick="document.getElementById('Help').style.display='none'">Close Help</kbd></br></samp>
+       </div>
+        <div id="chat" style="position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 240px">    <ul id="messages"></ul>
+          <form id="form"  action="">
+            <input id="input" autocomplete="off" />
+            <button style="background-color: #7c7878; /* Green */
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;">Send</button>
+          </form></div>
+          <div id='eRR' style="
+          display: none;
+          margin: auto;
+          width: 50%;
+          border: 3px solid rgb(148, 37, 37);
+          padding: 10px;">
+       <samp><h1>DuccBOX.js object [cube10] has peformed an ilegal aciton</h1></br>
+         <kbd onclick="document.getElementById('eRR').style.display = 'none'">Close Window</kbd></samp>
+          </div>
+          <div id='login-box' style="
+          bottom: 0;
+          display: none;
+          position: fixed;
+          margin: auto;
+          width: 50%;
+          border: 3px solid rgb(0, 0, 0);
+          padding: 10px;">
+       <samp><form id='login-form-box'>
+         <input type="text" id='email' value="email@email">
+         <input type="text" id="pass" value="pass">
+         <input type="submit" value="login">
+         </form>
+       </br>
+      </br>
+         <p id='login-status'></br>
+         <kbd onclick="document.getElementById('login-box').style.display = 'none'">Exit login form</kbd></samp>
+          </div>
+         </div> 
+         <div id='DuccBOXF3' style="display: none;
+         position: fixed;
+         border-style: solid;">
+         </br>
+       </br>
+       </br>
+       </br>
+       <div>
+         <samp><kbd>DuccBOX.js 4.0 M2</kbd>
+       </br>
+       <p id='F3CORDS'></p></br>
+       <p id='F3RENDER'></p></br>
+       <p id='F3WINDOW'></p></br>
+       <p id='F3HEAP'></p></br>
+       <p id="F3DATE"></p></br>
+      </samp>
+       </div>
+         </div></div>
+         <noscript><h1>DuccBOX.js will not run without javaScript...</h1></noscript>
+       <script>window.addEventListener("keydown", function () {switch (event.keyCode) {case 52:document.getElementById('DuccBOXF3').style.display = 'none';document.getElementById('DuccBOX').style.display = 'block';break;}})</script>
+        </body>
+      </html>
+      <!--Loaded from javascript-->
+      `)
+      console.log('[DUCCBOX] extra pram [render:true] loaded html')
+    }
     let players = [];
     console.log("[DuccBOX] Loading init chunk");
     if (!THREE) {
@@ -44,6 +238,14 @@ class DuccBOX {
         "[DuccBOX] THIS IS A FATAL THREE.JS ERROR PLEASE REPORT THIS TO @I like food#8767 [ENV THREE = NULL]"
       );
     }
+    console.log(`%c
+██████╗░██╗░░░██╗░█████╗░░█████╗░██████╗░░█████╗░██╗░░██╗░░░░░░░░██╗░██████╗
+██╔══██╗██║░░░██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗██╔╝░░░░░░░░██║██╔════╝
+██║░░██║██║░░░██║██║░░╚═╝██║░░╚═╝██████╦╝██║░░██║░╚███╔╝░░░░░░░░░██║╚█████╗░
+██║░░██║██║░░░██║██║░░██╗██║░░██╗██╔══██╗██║░░██║░██╔██╗░░░░██╗░░██║░╚═══██╗
+██████╔╝╚██████╔╝╚█████╔╝╚█████╔╝██████╦╝╚█████╔╝██╔╝╚██╗██╗╚█████╔╝██████╔╝
+╚═════╝░░╚═════╝░░╚════╝░░╚════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░╚════╝░╚═════╝░
+`, `font-family: monospace`);
     let user;
     if (dev == true) {
       socket = io();
